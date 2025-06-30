@@ -1,0 +1,8 @@
+server:
+  port: ":8080"
+
+auth:
+  base_url: "http://localhost:8082"
+
+grpc:
+  currency_service_url: "localhost:8090"
