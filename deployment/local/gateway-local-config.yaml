@@ -1,8 +1,0 @@
-server:
-  port: ":8080"
-
-auth:
-  base_url: "http://auth-generator:8080"
-
-grpc:
-  currency_service_url: "currency:8090"
