@@ -21,7 +21,7 @@ install-tools:
 	@echo "Checking and installing necessary tools..."
 	@if ! [ -x "$$(command -v $(PROTOC_GEN_GO))" ]; then \
 		echo "Installing protoc-gen-go..."; \
-		go install google.golang.org/protobuf/cmd/protoc-gen-go@latest; \ # для учебного проекта норм latest
+		go install google.golang.org/protobuf/cmd/protoc-gen-go@latest; \
 	fi
 	@if ! [ -x "$$(command -v $(PROTOC_GEN_GO_GRPC))" ]; then \
 		echo "Installing protoc-gen-go-grpc..."; \

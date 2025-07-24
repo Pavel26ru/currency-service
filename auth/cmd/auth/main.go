@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/vctrl/currency-service/auth/internal/handler" // поправь путь под свой модуль
+	"github.com/vctrl/currency-service/auth/internal/handler"
 	"github.com/vctrl/currency-service/pkg/currency"
 	"google.golang.org/grpc"
 )

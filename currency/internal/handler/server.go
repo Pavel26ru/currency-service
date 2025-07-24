@@ -2,11 +2,11 @@ package handler
 
 import (
 	"context"
+
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/vctrl/currency-service/currency/internal/dto"
 	"github.com/vctrl/currency-service/currency/internal/repository"
 	"github.com/vctrl/currency-service/pkg/currency"
-
 	"go.uber.org/zap"
 )
 
