@@ -1,34 +1,76 @@
 package service
 
 import (
+	"database/sql"
 	"errors"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/prometheus/client_golang/prometheus"
+	"golang.org/x/crypto/bcrypt"
 )
+
+var FailedAuthCounter = prometheus.NewCounter(
+	prometheus.CounterOpts{
+		Name: "Authorizations_Failed",
+		Help: "Total number of failed authorizations",
+	},
+)
+
+func init() {
+	prometheus.MustRegister(FailedAuthCounter)
+}
 
 // UserService — структура для работы с пользователями
 type UserService struct {
-	// Здесь могут быть зависимости: БД, конфиг, секрет для JWT и т.д.
 	jwtSecret []byte
-	// users map[string]string // если хранишь пользователей в памяти: login -> password
+	db        *sql.DB
 }
 
 // NewUserService — конструктор
-func NewUserService(secret string) *UserService {
+func NewUserService(secret string, db *sql.DB) *UserService {
 	return &UserService{
 		jwtSecret: []byte(secret),
-		// users: map[string]string{"admin": "admin"}, // пример
+		db:        db,
 	}
 }
 
 // Authenticate — проверка логина и пароля
 func (s *UserService) Authenticate(login, password string) bool {
-	// TODO: Реализуй свою логику (например, запрос к БД)
-	// Пример для in-memory:
-	// realPassword, ok := s.users[login]
-	// return ok && realPassword == password
-	return login == "admin" && password == "admin" // временная заглушка
+	var exists bool
+	err := s.db.QueryRow(
+		"SELECT EXISTS(SELECT 1 FROM users WHERE login = $1)",
+		login,
+	).Scan(&exists)
+
+	if err != nil || !exists {
+		FailedAuthCounter.Inc()
+		return false
+	}
+
+	var passwordHash string
+	err = s.db.QueryRow(
+		"SELECT password_hash FROM users WHERE login = $1",
+		login,
+	).Scan(&passwordHash)
+
+	if err != nil {
+		FailedAuthCounter.Inc()
+		return false
+	}
+
+	success := checkPassword(password, passwordHash)
+	if !success {
+		FailedAuthCounter.Inc()
+	}
+
+	return success
+}
+
+// проверяем пароль
+func checkPassword(password, hash string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+	return err == nil
 }
 
 // GenerateJWT — генерация JWT-токена

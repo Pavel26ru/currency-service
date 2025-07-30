@@ -32,6 +32,7 @@ message RateRecord {
 
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
 }
 
 message LoginRequest {
@@ -41,4 +42,12 @@ message LoginRequest {
 
 message LoginResponse {
   string token = 1;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  bool valid = 1;
 }

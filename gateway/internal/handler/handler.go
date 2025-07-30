@@ -17,7 +17,8 @@ type controller struct {
 	logger          *zap.Logger
 }
 
-func RegisterRoutes(authSvc service.AuthService,
+func RegisterRoutes(
+	authSvc service.AuthService,
 	currencySvc service.CurrencyService,
 	router *gin.Engine,
 	logger *zap.Logger) controller {

@@ -25,8 +25,10 @@ type DatabaseConfig struct {
 }
 
 func (dc DatabaseConfig) ToDSN() string {
-	// todo
-	return ""
+	return fmt.Sprintf(
+		"postgres://%s:%s@%s:%d/%s?sslmode=disable",
+		dc.User, dc.Password, dc.Host, dc.Port, dc.Name,
+	)
 }
 
 type WorkerConfig struct {
