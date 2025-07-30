@@ -4,29 +4,14 @@ import (
 	"fmt"
 
 	"github.com/spf13/viper"
+	"github.com/vctrl/currency-service/pkg/config"
 )
 
-type DatabaseConfig struct {
-	Host           string `mapstructure:"host"`
-	Port           int    `mapstructure:"port"`
-	User           string `mapstructure:"user"`
-	Password       string `mapstructure:"password"`
-	Name           string `mapstructure:"name"`
-	MigrationsPath string `mapstructure:"migrations_path"`
-}
-
-func (dc DatabaseConfig) ToDSN() string {
-	return fmt.Sprintf(
-		"postgres://%s:%s@%s:%d/%s?sslmode=disable",
-		dc.User, dc.Password, dc.Host, dc.Port, dc.Name,
-	)
-}
-
 type Config struct {
-	Server         ServerConfig   `mapstructure:"server"`
-	Auth           AuthConfig     `mapstructure:"auth"`
-	GRPC           GRPCConfig     `mapstructure:"grpc"`
-	DatabaseConfig DatabaseConfig `mapstructure:"database"`
+	Server         ServerConfig          `mapstructure:"server"`
+	Auth           AuthConfig            `mapstructure:"auth"`
+	GRPC           GRPCConfig            `mapstructure:"grpc"`
+	DatabaseConfig config.DatabaseConfig `mapstructure:"database"`
 }
 
 type ServerConfig struct {

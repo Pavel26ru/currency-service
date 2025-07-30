@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/vctrl/currency-service/pkg/currency"
 	"google.golang.org/grpc/codes"
@@ -15,9 +16,9 @@ type AuthServer struct {
 	userService *service.UserService
 }
 
-func NewAuthServer(secret string) *AuthServer {
+func NewAuthServer(secret string, db *sql.DB) *AuthServer {
 	return &AuthServer{
-		userService: service.NewUserService(secret),
+		userService: service.NewUserService(secret, db),
 	}
 }
 
@@ -30,4 +31,12 @@ func (s *AuthServer) Login(ctx context.Context, req *currency.LoginRequest) (*cu
 		return nil, status.Error(codes.Internal, "failed to generate token")
 	}
 	return &currency.LoginResponse{Token: token}, nil
+}
+
+func (s *AuthServer) ValidateToken(ctx context.Context, req *currency.ValidateTokenRequest) (*currency.ValidateTokenResponse, error) {
+	_, err := s.userService.ValidateJWT(req.Token)
+	if err != nil {
+		return &currency.ValidateTokenResponse{Valid: false}, nil
+	}
+	return &currency.ValidateTokenResponse{Valid: true}, nil
 }

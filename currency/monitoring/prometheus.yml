@@ -20,4 +20,4 @@ scrape_configs:
 
   - job_name: "auth"
     static_configs:
-      - targets: ["auth:8082"]
+      - targets: ["auth:8081"]

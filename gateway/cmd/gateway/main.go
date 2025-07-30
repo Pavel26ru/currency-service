@@ -135,7 +135,7 @@ func run() error {
 
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
-			log.Fatalf("srv.ListenAndServe: %s\n", err)
+			logger.Error("srv.ListenAndServe failed", zap.Error(err))
 		}
 	}()
 

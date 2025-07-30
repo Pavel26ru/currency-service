@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/viper"
+	"github.com/vctrl/currency-service/pkg/config"
 )
 
 type ServiceConfig struct {
@@ -15,22 +16,6 @@ type APIConfig struct {
 	TimeoutSeconds int    `mapstructure:"timeout_seconds"`
 }
 
-type DatabaseConfig struct {
-	Host           string `mapstructure:"host"`
-	Port           int    `mapstructure:"port"`
-	User           string `mapstructure:"user"`
-	Password       string `mapstructure:"password"`
-	Name           string `mapstructure:"name"`
-	MigrationsPath string `mapstructure:"migrations_path"`
-}
-
-func (dc DatabaseConfig) ToDSN() string {
-	return fmt.Sprintf(
-		"postgres://%s:%s@%s:%d/%s?sslmode=disable",
-		dc.User, dc.Password, dc.Host, dc.Port, dc.Name,
-	)
-}
-
 type WorkerConfig struct {
 	Schedule     string `mapstructure:"schedule"`
 	CurrencyPair struct {
@@ -40,10 +25,10 @@ type WorkerConfig struct {
 }
 
 type AppConfig struct {
-	Service  ServiceConfig  `mapstructure:"service"`
-	API      APIConfig      `mapstructure:"api"`
-	Database DatabaseConfig `mapstructure:"database"`
-	Worker   WorkerConfig   `mapstructure:"worker"`
+	Service  ServiceConfig         `mapstructure:"service"`
+	API      APIConfig             `mapstructure:"api"`
+	Database config.DatabaseConfig `mapstructure:"database"`
+	Worker   WorkerConfig          `mapstructure:"worker"`
 }
 
 func LoadConfig(path string) (AppConfig, error) {
