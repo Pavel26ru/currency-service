@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/vctrl/currency-service/currency/internal/config"
+	"github.com/vctrl/currency-service/pkg/config"
 )
 
 // TODO не должно быть частью репозитория!

@@ -14,7 +14,7 @@ var (
 )
 
 type authClientInterface interface {
-	GenerateToken(ctx context.Context, login string) (string, error)
+	GenerateToken(ctx context.Context, login, password string) (string, error)
 	ValidateToken(ctx context.Context, token string) error
 }
 
@@ -49,7 +49,7 @@ func (s *AuthService) Login(ctx context.Context, login, password string) (string
 		return "", ErrInvalidCredentials
 	}
 
-	res, err := s.authClient.GenerateToken(ctx, login)
+	res, err := s.authClient.GenerateToken(ctx, login, password)
 	if err != nil {
 		return "", fmt.Errorf("authClient.GenerateToken: %w", err)
 	}

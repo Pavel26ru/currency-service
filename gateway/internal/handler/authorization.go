@@ -5,12 +5,30 @@ import (
 
 	"github.com/vctrl/currency-service/gateway/internal/dto"
 
+	"context"
+
 	"github.com/gin-gonic/gin"
+	"github.com/vctrl/currency-service/pkg/currency"
 )
 
 type registerRequest struct {
 	Username string `form:"username" binding:"required"`
 	Password string `form:"password" binding:"required"`
+}
+
+type AuthService struct {
+	authClient currency.AuthServiceClient
+}
+
+func (s *AuthService) Login(ctx context.Context, login, password string) (string, error) {
+	resp, err := s.authClient.Login(ctx, &currency.LoginRequest{
+		Login:    login,
+		Password: password,
+	})
+	if err != nil {
+		return "", err
+	}
+	return resp.Token, nil
 }
 
 func (s *controller) Register(c *gin.Context) {

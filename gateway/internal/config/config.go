@@ -4,12 +4,14 @@ import (
 	"fmt"
 
 	"github.com/spf13/viper"
+	"github.com/vctrl/currency-service/pkg/config"
 )
 
 type Config struct {
-	Server ServerConfig `mapstructure:"server"`
-	Auth   AuthConfig   `mapstructure:"auth"`
-	GRPC   GRPCConfig   `mapstructure:"grpc"`
+	Server         ServerConfig          `mapstructure:"server"`
+	Auth           AuthConfig            `mapstructure:"auth"`
+	GRPC           GRPCConfig            `mapstructure:"grpc"`
+	DatabaseConfig config.DatabaseConfig `mapstructure:"database"`
 }
 
 type ServerConfig struct {

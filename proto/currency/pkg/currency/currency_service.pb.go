@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v5.29.3
-// source: proto/currency/currency_service.proto
+// source: currency_service.proto
 
 package currency
 
@@ -33,7 +33,7 @@ type GetRateRequest struct {
 
 func (x *GetRateRequest) Reset() {
 	*x = GetRateRequest{}
-	mi := &file_proto_currency_currency_service_proto_msgTypes[0]
+	mi := &file_currency_service_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +45,7 @@ func (x *GetRateRequest) String() string {
 func (*GetRateRequest) ProtoMessage() {}
 
 func (x *GetRateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_currency_currency_service_proto_msgTypes[0]
+	mi := &file_currency_service_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *GetRateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRateRequest.ProtoReflect.Descriptor instead.
 func (*GetRateRequest) Descriptor() ([]byte, []int) {
-	return file_proto_currency_currency_service_proto_rawDescGZIP(), []int{0}
+	return file_currency_service_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetRateRequest) GetCurrency() string {
@@ -92,7 +92,7 @@ type GetRateResponse struct {
 
 func (x *GetRateResponse) Reset() {
 	*x = GetRateResponse{}
-	mi := &file_proto_currency_currency_service_proto_msgTypes[1]
+	mi := &file_currency_service_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -104,7 +104,7 @@ func (x *GetRateResponse) String() string {
 func (*GetRateResponse) ProtoMessage() {}
 
 func (x *GetRateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_currency_currency_service_proto_msgTypes[1]
+	mi := &file_currency_service_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -117,7 +117,7 @@ func (x *GetRateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRateResponse.ProtoReflect.Descriptor instead.
 func (*GetRateResponse) Descriptor() ([]byte, []int) {
-	return file_proto_currency_currency_service_proto_rawDescGZIP(), []int{1}
+	return file_currency_service_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetRateResponse) GetCurrency() string {
@@ -144,7 +144,7 @@ type RateRecord struct {
 
 func (x *RateRecord) Reset() {
 	*x = RateRecord{}
-	mi := &file_proto_currency_currency_service_proto_msgTypes[2]
+	mi := &file_currency_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -156,7 +156,7 @@ func (x *RateRecord) String() string {
 func (*RateRecord) ProtoMessage() {}
 
 func (x *RateRecord) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_currency_currency_service_proto_msgTypes[2]
+	mi := &file_currency_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -169,7 +169,7 @@ func (x *RateRecord) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RateRecord.ProtoReflect.Descriptor instead.
 func (*RateRecord) Descriptor() ([]byte, []int) {
-	return file_proto_currency_currency_service_proto_rawDescGZIP(), []int{2}
+	return file_currency_service_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RateRecord) GetDate() *timestamppb.Timestamp {
@@ -196,7 +196,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_proto_currency_currency_service_proto_msgTypes[3]
+	mi := &file_currency_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -208,7 +208,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_currency_currency_service_proto_msgTypes[3]
+	mi := &file_currency_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -221,7 +221,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_proto_currency_currency_service_proto_rawDescGZIP(), []int{3}
+	return file_currency_service_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *LoginRequest) GetLogin() string {
@@ -247,7 +247,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_proto_currency_currency_service_proto_msgTypes[4]
+	mi := &file_currency_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -259,7 +259,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_currency_currency_service_proto_msgTypes[4]
+	mi := &file_currency_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -272,7 +272,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_proto_currency_currency_service_proto_rawDescGZIP(), []int{4}
+	return file_currency_service_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LoginResponse) GetToken() string {
@@ -291,7 +291,7 @@ type ValidateTokenRequest struct {
 
 func (x *ValidateTokenRequest) Reset() {
 	*x = ValidateTokenRequest{}
-	mi := &file_proto_currency_currency_service_proto_msgTypes[5]
+	mi := &file_currency_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -303,7 +303,7 @@ func (x *ValidateTokenRequest) String() string {
 func (*ValidateTokenRequest) ProtoMessage() {}
 
 func (x *ValidateTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_currency_currency_service_proto_msgTypes[5]
+	mi := &file_currency_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -316,7 +316,7 @@ func (x *ValidateTokenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTokenRequest.ProtoReflect.Descriptor instead.
 func (*ValidateTokenRequest) Descriptor() ([]byte, []int) {
-	return file_proto_currency_currency_service_proto_rawDescGZIP(), []int{5}
+	return file_currency_service_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ValidateTokenRequest) GetToken() string {
@@ -335,7 +335,7 @@ type ValidateTokenResponse struct {
 
 func (x *ValidateTokenResponse) Reset() {
 	*x = ValidateTokenResponse{}
-	mi := &file_proto_currency_currency_service_proto_msgTypes[6]
+	mi := &file_currency_service_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -347,7 +347,7 @@ func (x *ValidateTokenResponse) String() string {
 func (*ValidateTokenResponse) ProtoMessage() {}
 
 func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_currency_currency_service_proto_msgTypes[6]
+	mi := &file_currency_service_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -360,7 +360,7 @@ func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTokenResponse.ProtoReflect.Descriptor instead.
 func (*ValidateTokenResponse) Descriptor() ([]byte, []int) {
-	return file_proto_currency_currency_service_proto_rawDescGZIP(), []int{6}
+	return file_currency_service_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ValidateTokenResponse) GetValid() bool {
@@ -370,11 +370,11 @@ func (x *ValidateTokenResponse) GetValid() bool {
 	return false
 }
 
-var File_proto_currency_currency_service_proto protoreflect.FileDescriptor
+var File_currency_service_proto protoreflect.FileDescriptor
 
-const file_proto_currency_currency_service_proto_rawDesc = "" +
+const file_currency_service_proto_rawDesc = "" +
 	"\n" +
-	"%proto/currency/currency_service.proto\x12\bcurrency\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9a\x01\n" +
+	"\x16currency_service.proto\x12\bcurrency\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9a\x01\n" +
 	"\x0eGetRateRequest\x12\x1a\n" +
 	"\bcurrency\x18\x01 \x01(\tR\bcurrency\x127\n" +
 	"\tdate_from\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\bdateFrom\x123\n" +
@@ -402,19 +402,19 @@ const file_proto_currency_currency_service_proto_rawDesc = "" +
 	"\rValidateToken\x12\x1e.currency.ValidateTokenRequest\x1a\x1f.currency.ValidateTokenResponseB\x0eZ\fpkg/currencyb\x06proto3"
 
 var (
-	file_proto_currency_currency_service_proto_rawDescOnce sync.Once
-	file_proto_currency_currency_service_proto_rawDescData []byte
+	file_currency_service_proto_rawDescOnce sync.Once
+	file_currency_service_proto_rawDescData []byte
 )
 
-func file_proto_currency_currency_service_proto_rawDescGZIP() []byte {
-	file_proto_currency_currency_service_proto_rawDescOnce.Do(func() {
-		file_proto_currency_currency_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_currency_currency_service_proto_rawDesc), len(file_proto_currency_currency_service_proto_rawDesc)))
+func file_currency_service_proto_rawDescGZIP() []byte {
+	file_currency_service_proto_rawDescOnce.Do(func() {
+		file_currency_service_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_currency_service_proto_rawDesc), len(file_currency_service_proto_rawDesc)))
 	})
-	return file_proto_currency_currency_service_proto_rawDescData
+	return file_currency_service_proto_rawDescData
 }
 
-var file_proto_currency_currency_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
-var file_proto_currency_currency_service_proto_goTypes = []any{
+var file_currency_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_currency_service_proto_goTypes = []any{
 	(*GetRateRequest)(nil),        // 0: currency.GetRateRequest
 	(*GetRateResponse)(nil),       // 1: currency.GetRateResponse
 	(*RateRecord)(nil),            // 2: currency.RateRecord
@@ -424,7 +424,7 @@ var file_proto_currency_currency_service_proto_goTypes = []any{
 	(*ValidateTokenResponse)(nil), // 6: currency.ValidateTokenResponse
 	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
 }
-var file_proto_currency_currency_service_proto_depIdxs = []int32{
+var file_currency_service_proto_depIdxs = []int32{
 	7, // 0: currency.GetRateRequest.date_from:type_name -> google.protobuf.Timestamp
 	7, // 1: currency.GetRateRequest.date_to:type_name -> google.protobuf.Timestamp
 	2, // 2: currency.GetRateResponse.rates:type_name -> currency.RateRecord
@@ -442,26 +442,26 @@ var file_proto_currency_currency_service_proto_depIdxs = []int32{
 	0, // [0:4] is the sub-list for field type_name
 }
 
-func init() { file_proto_currency_currency_service_proto_init() }
-func file_proto_currency_currency_service_proto_init() {
-	if File_proto_currency_currency_service_proto != nil {
+func init() { file_currency_service_proto_init() }
+func file_currency_service_proto_init() {
+	if File_currency_service_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_currency_currency_service_proto_rawDesc), len(file_proto_currency_currency_service_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_currency_service_proto_rawDesc), len(file_currency_service_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   2,
 		},
-		GoTypes:           file_proto_currency_currency_service_proto_goTypes,
-		DependencyIndexes: file_proto_currency_currency_service_proto_depIdxs,
-		MessageInfos:      file_proto_currency_currency_service_proto_msgTypes,
+		GoTypes:           file_currency_service_proto_goTypes,
+		DependencyIndexes: file_currency_service_proto_depIdxs,
+		MessageInfos:      file_currency_service_proto_msgTypes,
 	}.Build()
-	File_proto_currency_currency_service_proto = out.File
-	file_proto_currency_currency_service_proto_goTypes = nil
-	file_proto_currency_currency_service_proto_depIdxs = nil
+	File_currency_service_proto = out.File
+	file_currency_service_proto_goTypes = nil
+	file_currency_service_proto_depIdxs = nil
 }

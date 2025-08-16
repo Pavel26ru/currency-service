@@ -6,8 +6,8 @@ import (
 	"log"
 
 	"github.com/spf13/viper"
-	"github.com/vctrl/currency-service/currency/internal/config"
 	"github.com/vctrl/currency-service/currency/internal/migrations"
+	"github.com/vctrl/currency-service/pkg/config"
 )
 
 func main() {

@@ -1,30 +1,36 @@
 package migrations
 
 import (
+	"embed"
 	"errors"
+	"io/fs"
 
-	"github.com/golang-migrate/migrate"
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/source/iofs"
 )
+
+//go:embed *.sql
+var migrationFiles embed.FS
 
 func RunPgMigrations(dsn string) error {
 	if dsn == "" {
 		return errors.New("no DSN provided")
 	}
 
-	path := ""
-	// переделать на источник iofs
-	// https://github.com/golang-migrate/migrate/blob/master/source/iofs/example_test.go
-	m, err := migrate.New(
-		path,
-		dsn,
-	)
+	sub, err := fs.Sub(migrationFiles, ".")
 	if err != nil {
 		return err
 	}
-
+	d, err := iofs.New(sub, ".")
+	if err != nil {
+		return err
+	}
+	m, err := migrate.NewWithSourceInstance("iofs", d, dsn)
+	if err != nil {
+		return err
+	}
 	if err := m.Up(); err != nil && !errors.Is(err, migrate.ErrNoChange) {
 		return err
 	}
-
 	return nil
 }

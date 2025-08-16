@@ -2,6 +2,11 @@ package main
 
 import (
 	"context"
+	"net/http"
+	"os/signal"
+	"syscall"
+	"time"
+
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	currencyClient "github.com/vctrl/currency-service/currency/internal/clients/currency"
@@ -11,10 +16,6 @@ import (
 	"github.com/vctrl/currency-service/currency/internal/repository"
 	"github.com/vctrl/currency-service/currency/internal/service"
 	"github.com/vctrl/currency-service/pkg/currency"
-	"net/http"
-	"os/signal"
-	"syscall"
-	"time"
 
 	"flag"
 	"fmt"
@@ -102,7 +103,7 @@ func main() {
 
 	// todo apply middleware
 
-	currencyServer := handler.NewCurrencyServer(svc,
+	currencyServer := handler.NewCurrencyServer(&svc,
 		logger,
 		requestCount,
 		requestDuration,

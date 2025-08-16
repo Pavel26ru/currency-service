@@ -10,6 +10,8 @@ services:
       PGDATA: /data/postgres
     ports:
       - "5432:5432"
+    volumes:
+      - ./pgData:/data/postgres
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U admin -d currency_db"]
       interval: 1s
@@ -28,17 +30,21 @@ services:
       postgres:
         condition: service_healthy
 
-  auth-generator:
-    image: andrianovartemii/gm-test-task-auth-generator:latest
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
     ports:
       - "8082:8080"
+      - "8084:8081"
     environment:
-      AUTH_TOKEN_LIFETIME: 2
+      JWT_SECRET: "jwt_secret_key_SoftTradeIT" # если используешь переменные окружения
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/ping"]
+      test: ["CMD", "grpcurl", "-plaintext", "localhost:8080", "currency.AuthService/Login", "-d", '{"login":"admin","password":"admin"}']
       interval: 1s
       timeout: 1s
       retries: 5
+
   cron:
     build:
       context: .
@@ -83,7 +89,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     volumes:
-      - /Users/vectoreal/Repos/github.com/vctrl/currency-service/currency/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /Users/mac/Applications/GO_Projects/FinalProjectGO/currency-service/currency/monitoring/prometheus.yml
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
     ports:
